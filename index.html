@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotle.io - Indovina l'artista musicale</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Spotle.io</h1>
+            <p class="subtitle">Indovina l'artista musicale in 10 tentativi!</p>
+        </header>
+
+        <!-- Menù iniziale -->
+        <div id="game-menu" class="game-menu">
+            <div class="menu-option" id="daily-challenge">
+                <i class="fas fa-calendar-day"></i>
+                <h2>Artista del Giorno</h2>
+                <p>Indovina l'artista musicale del giorno in 10 tentativi!</p>
+                <button class="menu-button">Gioca</button>
+            </div>
+            <div class="menu-option" id="random-challenge">
+                <i class="fas fa-random"></i>
+                <h2>Modalità Casuale</h2>
+                <p>Sfida te stesso con artisti casuali illimitati!</p>
+                <button class="menu-button">Gioca</button>
+            </div>
+        </div>
+
+        <div class="game-container hidden" id="game-container">
+            <div class="game-header">
+                <div id="game-mode-indicator">Modalità: <span>Artista del Giorno</span></div>
+                <button id="back-to-menu" class="back-button"><i class="fas fa-arrow-left"></i> Menu</button>
+            </div>
+            
+            <div class="search-container">
+                <input type="text" id="artist-search" placeholder="Cerca un artista..." autocomplete="off">
+                <button id="submit-guess">Indovina</button>
+                <div id="autocomplete-results" class="autocomplete-results"></div>
+            </div>
+
+            <div id="attempts-list" class="attempts-list"></div>
+
+            <div class="game-info">
+                <div id="attempts-left">Tentativi rimasti: <span>10</span></div>
+                <div id="timer">Prossimo artista tra: <span>--:--:--</span></div>
+            </div>
+        </div>
+
+        <div id="game-result" class="hidden">
+            <div id="success-message" class="hidden">
+                <h2>Congratulazioni!</h2>
+                <p>Hai indovinato l'artista: <span id="correct-artist"></span></p>
+                <button id="share-result">Condividi Risultato</button>
+                <button id="play-again" class="play-again-btn">Gioca di nuovo</button>
+                <button id="try-random-mode" class="try-random-btn">Prova la modalità casuale</button>
+            </div>
+            <div id="failure-message" class="hidden">
+                <h2>Peccato!</h2>
+                <p>L'artista era: <span id="reveal-artist"></span></p>
+                <p>Riprova domani con un nuovo artista!</p>
+                <button id="play-again-fail" class="play-again-btn">Gioca di nuovo</button>
+                <button id="try-random-mode-fail" class="try-random-btn">Prova la modalità casuale</button>
+            </div>
+        </div>
+
+        <div id="how-to-play" class="modal hidden">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h2>Come si gioca</h2>
+                <ul>
+                    <li>Indovina l'artista musicale in massimo 10 tentativi</li>
+                    <li>Dopo ogni tentativo, riceverai indizi sulle caratteristiche dell'artista</li>
+                    <li>🟩 Verde: caratteristica corretta</li>
+                    <li>🟨 Giallo: caratteristica parzialmente corretta o vicina</li>
+                    <li>⬜ Grigio: caratteristica completamente sbagliata</li>
+                </ul>
+                <p>Un nuovo artista sarà disponibile ogni giorno nella modalità "Artista del Giorno"!</p>
+                <p>Nella modalità "Casuale" puoi giocare quante volte vuoi con artisti diversi.</p>
+            </div>
+        </div>
+
+        <footer>
+            <button id="show-how-to-play">Come si gioca</button>
+            <p>&copy; 2023 Spotle.io - Un gioco musicale</p>
+        </footer>
+    </div>
+
+    <script src="data/artists.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
